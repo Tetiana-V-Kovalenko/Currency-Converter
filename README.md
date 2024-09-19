@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Currency Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This currency converter project allows users to convert between multiple currencies. The application includes a header displaying the current exchange rates for USD and EUR relative to UAH. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Header**: Displays the current exchange rates for USD and EUR relative to UAH. 
+- **Conversion Component**:
+  - Separate input and select elements for each currency.
+  - Input fields allow users to specify the amount to convert.
+  - Select elements to provide options for the required currency.
+  - Conversion is bidirectional, meaning that changing the value in one currency updates the value in the other and vice versa.
+  - Changing the currency in the select elements recalculates the conversion values correctly.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- **React**: For building the user interface.
+- **TypeScript**: This is for static type checking and type safety.
+- **Tailwind CSS**: For styling and layout.
+- **Zustand**: For state management.
+- **Vite**: For fast and efficient development and build process.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To get started with this project, follow these steps:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Tetiana-V-Kovalenko/currency-converter.git
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. **Navigate into the project directory:**
+   ```bash
+   cd currency-converter
+
+3. **Install dependencies:**
+   ```bash
+npm install
+# or
+yarn install
+
+4. **Start the Frontend Project**
+    
+    ```bash
+    cd ../
+    npm run dev
+    # or
+    yarn dev
+    
+    ```
+
+
