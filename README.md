@@ -41,10 +41,9 @@ To get started with this project, follow these steps:
     yarn install
     ```
 
-4. **Start the Frontend Project**
+4. **Start the Project**
     
     ```bash
-    cd ../
     npm run dev
     # or
     yarn dev 
