@@ -35,10 +35,12 @@ To get started with this project, follow these steps:
    cd currency-converter
 
 3. **Install dependencies:**
-   ```bash
-npm install
-# or
-yarn install
+ ```bash
+    
+    npm run dev
+    # or
+    yarn dev
+    ```
 
 4. **Start the Frontend Project**
     
