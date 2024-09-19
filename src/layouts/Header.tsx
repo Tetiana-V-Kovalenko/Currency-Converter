@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { fetchCurrentCurrencyRate } from "../service/fetchCurrentCurrency";
 import { TCurrencyRate } from "../types/currencyRate";
 import { useCurrencyStore } from "../store/CurrencyStore";
+import { isCurrencyRateArray } from "../typeGuards/isCurrencyRate";
 
 const Header = () => {
-  const [displayedCurrencies, setDisplayedCurrencies] = useState<
+  const [displayedExchangeRate, setDisplayedExchangeRate] = useState<
     TCurrencyRate[]
   >([]);
 
@@ -13,11 +14,16 @@ const Header = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchCurrentCurrencyRate();
-      const filteredData = data.filter(
-        (d: TCurrencyRate) => d.cc === "USD" || d.cc === "EUR"
-      );
-      setCurrentCurrencies(data);
-      setDisplayedCurrencies(filteredData);
+      if (!isCurrencyRateArray(data)) {
+        setCurrentCurrencies([]);
+        setDisplayedExchangeRate([]);
+      } else {
+        const usdAndEurCurrencyRate = data.filter(
+          (d: TCurrencyRate) => d.cc === "USD" || d.cc === "EUR"
+        );
+        setCurrentCurrencies(data);
+        setDisplayedExchangeRate(usdAndEurCurrencyRate);
+      }
     };
 
     fetchData();
@@ -29,11 +35,11 @@ const Header = () => {
         <div className="text-[24px]">Currency converter</div>
         <div className="flex items-center gap-9">
           <div>
-            {displayedCurrencies.length !== 0
-              ? displayedCurrencies[0].exchangedate
+            {displayedExchangeRate.length !== 0
+              ? displayedExchangeRate[0].exchangedate
               : null}
           </div>
-          {displayedCurrencies.map((currency) => (
+          {displayedExchangeRate.map((currency) => (
             <div key={currency.cc}>
               <div>{currency.cc}</div>
               <div className="font-normal">

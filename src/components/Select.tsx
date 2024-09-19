@@ -11,6 +11,7 @@ export type SelectProps = {
   label?: string;
 };
 const Select = ({ data, onChange, label }: SelectProps) => {
+  
   if (!isCurrencyRateArray(data)) {
     return <div>Error: Data is not valid.</div>;
   }
